@@ -23,7 +23,7 @@ module honeycomb (length, width, height, cell_size, wall_thickness, sample_lengt
             tr_mod = cell_size + wall_thickness;
             tr_x = sqrt(3)/2 * tr_mod;
             tr_y = tr_mod / 2;
-            off_x = -1 * wall_thickness / 2;
+            off_x = -cell_size/2 + 1 * wall_thickness;
             off_y = wall_thickness / 2;
             difference(){
                         cube([length, width, height]);
@@ -38,10 +38,10 @@ module honeycomb (length, width, height, cell_size, wall_thickness, sample_lengt
                 }
                 cube([length, width, 3*height]);
             }
-        translate([(length-sample_length)/2-1*wall_thickness,width-sample_width-1*wall_thickness, 0]) cube([length, sample_width+1*wall_thickness, 1*height]);
+        translate([0,width-sample_width-1*wall_thickness, 0]) cube([length, sample_width+1*wall_thickness, 1*height]);
         }
        translate([(length-sample_length)/2,width-sample_width, 0]) cube([sample_length, sample_width, 5]);
     }
 }
 //honeycomb(length, width, height, cell_size, wall_thickness, sample_length, sample_width);
-honeycomb(34, 34, 2, 5.2+0.05, 0.5, 30, 15);
+honeycomb(34, 34, 2, 5.2, 0.5, 30, 15);
