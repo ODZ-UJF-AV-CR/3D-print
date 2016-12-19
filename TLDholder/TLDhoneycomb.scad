@@ -24,12 +24,12 @@ module honeycomb (length, width, height, cell_size, wall_thickness, sample_lengt
             tr_x = sqrt(3)/2 * tr_mod;
             tr_y = tr_mod / 2;
             off_x = -cell_size/2 + 2 * wall_thickness;
-            off_y = -wall_thickness;
+            off_y = -wall_thickness/2;
             difference(){
                         cube([length, width, height]);
                         for (i = [0 : no_of_rows]) {
                                 translate([i * tr_x + off_x, (i % 2) * tr_y + off_y, (height) / 2])
-                                        hc_column(width, height, cell_size, wall_thickness);
+                                        #hc_column(width, height, cell_size, wall_thickness);
                         }
             }
             difference() {
