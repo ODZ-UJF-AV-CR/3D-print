@@ -29,7 +29,7 @@ module honeycomb (length, width, height, cell_size, wall_thickness, sample_lengt
                         cube([length, width, height]);
                         for (i = [0 : no_of_rows]) {
                                 translate([i * tr_x + off_x, (i % 2) * tr_y + off_y, (height) / 2])
-                                        #hc_column(width, height, cell_size, wall_thickness);
+                                        hc_column(width, height, cell_size, wall_thickness);
                         }
             }
             difference() {

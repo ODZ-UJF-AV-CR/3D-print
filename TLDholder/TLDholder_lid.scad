@@ -1,5 +1,5 @@
 
-wall_thickness=0.5+0.05;
+wall_thickness=0.5+(0.2/3);
 height=1;
 length=34 - 6*wall_thickness;
 width=34 - 6*wall_thickness;
