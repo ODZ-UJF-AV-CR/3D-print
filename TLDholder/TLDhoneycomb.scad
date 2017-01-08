@@ -1,3 +1,5 @@
+$fn = 100;
+
 module hc_hexagon(size, height) {
 	box_width = size/1.75;
 	for (r = [-60, 0, 60]) rotate([0,0,r]) cube([box_width, size, height],
@@ -44,4 +46,7 @@ module honeycomb (length, width, height, cell_size, wall_thickness, sample_lengt
     }
 }
 //honeycomb(length, width, height, cell_size, wall_thickness, sample_length, sample_width);
-honeycomb(34, 34, 2, 5.2, 0.5, 30, 15);
+honeycomb(34, 34, 2, 5.2+0.85, 0.5, 30, 15);
+
+//#color("blue") translate([4,3,0]) cylinder(5, 4.6/2, 4.6/2); 
+//#color("red") translate([3.6,9.5,0]) cylinder(5, 5.2/2, 5.2/2); 
