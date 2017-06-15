@@ -15,7 +15,7 @@ nut_size = 6.6;     // K otvoru na matičku
 MLAB_grid = 10.16;
 pedestal_height = 2; 
 
-ot = MLAB_grid/2;         //Vzdálenost okraje od děr v plošňáku pro stranu s tunelem
+ot = 6*MLAB_grid/11;         //Vzdálenost okraje od děr v plošňáku pro stranu s tunelem
 o = MLAB_grid/2+d/2;   //Vzdálenost zbylých okrajů od děr v plošňáku
 
 
@@ -72,7 +72,11 @@ module konstrukce1()
       //Vedlejší příčky - ve směru z
       for(i = [1:a]) {
      translate([0, o + MLAB_grid*(i - 1), h/2])
-      cylinder(h, d/2, d/2, center = true);
+      difference() {
+          cylinder(h, d/2, d/2, center = true);
+          translate([d/2,0,h/2])
+          cube([d,d,h/2+5], center = true);
+      }
       }
       for(i = [1:b]) {
      translate([ot+MLAB_grid*(i-1), 0, h/2])
@@ -237,18 +241,19 @@ translate([(MLAB_grid*(b-1)+2*ot)/2, okraj/2-d/2, h - 1.5*okraj])
     difference() { 
    cube([MLAB_grid,MLAB_grid,h+d/2], center = true);
    translate([0,0,0]) {
-   cube([MLAB_grid-2,MLAB_grid-2, -2], center = true);
         
    cube([MLAB_grid-2,MLAB_grid-2,h+2], center = true); }
    translate([-MLAB_grid/2+d/2-1,0,-h/2+d/4-1]) {
    cube([d+1, 2*MLAB_grid, d+1], center = true); }
-intersection(){
+   translate([4,0,(-h+8)/2])
+   cube([10,MLAB_grid/2+d,12], center = true);
+/* intersection(){
        translate([0,0,-h/2+9])
        rotate([225+20,0,0]) 
         cube([10,10,10]);
        translate([0,0,-h/2+9])
        rotate([225-20,0,0]) 
-        cube([10,10,10]);}
+        cube([10,10,10]);} */
    }   
    
 /*   
