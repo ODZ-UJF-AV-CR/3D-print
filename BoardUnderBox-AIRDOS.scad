@@ -24,9 +24,9 @@ roh =0.5; // Zaoblení hran
 
 tld = 2.8; //tloušťka destičky
 rantv = tld - 0.8; //výška rantlíku a středu
-draz = 0.4; //zvětšení drážky pro krabičku (kvůli roztažení plastu při tisku)
-rants = 0.8; //šířka rantlíku
-pomoc_kraj = rants+(draz+2*okraj)/2;
+draz = 0.2; //zvětšení drážky pro krabičku (kvůli roztažení plastu při tisku)
+rants = 1.2; //šířka rantlíku
+pomoc_kraj = rants+(2*draz+okraj)/2;
 
 // Kvádr a válec se zaoblenými hranami
 module roundcube(size,center=true,corner) {
@@ -128,6 +128,10 @@ mirror([0,1,0]) deska();
        cylinder(3, 3.5/2, 3.5/2, center = true);
  translate([ot+MLAB_grid*8, o+MLAB_grid*0, tld/2])
        cylinder(3, 3.5/2, 3.5/2, center = true);
+       
+       // zůžení destičky pod plošnými spoji
+       translate([ot+MLAB_grid*4.5, o+MLAB_grid*1.5, tld])
+       cube([MLAB_grid*(b-1)-3.5, MLAB_grid*(a)-3.5, 2*rantv],center = true);
          
 }
 
